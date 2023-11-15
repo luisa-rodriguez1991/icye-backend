@@ -3,7 +3,9 @@ var cors = require('cors')
 const app = express()
 const port = 3000
 const nodemailer = require('nodemailer');
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:3001'
+}));
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
