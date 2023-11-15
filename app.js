@@ -578,9 +578,10 @@ app.post('/newsletter', (req, res) => {
     
     
 })
+const PORT = process.env.PORT || 5001
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
 
 
