@@ -1,7 +1,9 @@
 const express = require('express')
+var cors = require('cors')
 const app = express()
 const port = 3000
 const nodemailer = require('nodemailer');
+app.use(cors())
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
