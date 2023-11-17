@@ -4,7 +4,7 @@ const app = express()
 const port = 3000
 const nodemailer = require('nodemailer');
 app.use(cors({
-  origin: 'http://localhost:3001'
+  origin: '*'
 }));
 
 app.use(express.urlencoded({extended: true}))
@@ -153,7 +153,7 @@ const templateUserConfirmation = (data, newsletter)=> {
 
                    <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
                    
-                    <a target="_blank" style="text-decoration: underline; color: #000000;" href="tel:TODO Telefono">TODO TELEFON</a>
+                    <a target="_blank" style="text-decoration: underline; color: #000000;" href="tel:+57 310 7346918  Telefono"> +57 310 7346918</a>
                     </p>
                 </td>
               </tr>
@@ -173,12 +173,12 @@ const templateUserConfirmation = (data, newsletter)=> {
                   <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/assets/img/icye_logo.png" align="center" width="180" >
     
                   <p style="font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                    TODO Direccion
+                  Carrera 15 No. 36-40 Bogotá D.C
                   </p>
     
                   <p style="margin-bottom: 0; font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                    <a target="_blank" style="text-decoration: underline; color: #011F7F;" href="                    TODO web                    ">
-                    TODO Pagina web
+                    <a target="_blank" style="text-decoration: underline; color: #011F7F;" href="icyecol@icyecolombia.com">
+                    icyecol@icyecolombia.com
 
                     </a>
                   </p>
@@ -398,12 +398,12 @@ const templateICYEConfirmation = (data, newsletter)=> {
                   <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/assets/img/icye_logo.png" align="center" width="180" >
     
                   <p style="font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                    TODO Direccion
+                  Carrera 15 No. 36-40 Bogotá D.C Direccion
                   </p>
     
                   <p style="margin-bottom: 0; font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                    <a target="_blank" style="text-decoration: underline; color: #011F7F;" href="                    TODO web                    ">
-                    TODO Pagina web
+                    <a target="_blank" style="text-decoration: underline; color: #011F7F;" href="icyecol@icyecolombia.com">
+                    icyecol@icyecolombia.com Pagina web
 
                     </a>
                   </p>
