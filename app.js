@@ -116,19 +116,20 @@ const templateUserConfirmation = (data, newsletter)=> {
                 ${newsletter ? (`
                 <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
                   
-                Bienevenido a ICYE Colombia Newsletter
+                ${data.locale==="es"?"Bienevenido a ICYE Colombia Newsletter":"Welcome to ICYE Colombia Newsletter"}
                 
                 </h1>
 
                 <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                                
-                 Gracias por inscribirte a nuestro Newsletter
+                ${data.locale==="es"?"Gracias por inscribirte a nuestro Newsletter":"TODO English Gracias por inscribirte a nuestro Newsletter"}
+            
+                 
                 </p> 
 
                 `) : (`
                     <tr>
                         <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
-                            Hola!, ${data.firstname} ${data.lastname}
+                        ${data.locale==="es"?"Hola!, ":"Hi!, "} ${data.firstname} ${data.lastname}
                         </h1>
                         ${data.programm ? (`
                             <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
