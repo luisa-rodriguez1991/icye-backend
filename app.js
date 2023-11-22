@@ -129,18 +129,21 @@ const templateUserConfirmation = (data, newsletter)=> {
                 `) : (`
                     <tr>
                         <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
-                        ${data.locale==="es"?"Hola!, ":"Hi!, "} ${data.firstname} ${data.lastname}
-                        </h1>
+                        ${data.locale==="es"?"Hola!, ":"Hi!, "} ${data.firstname} ${data.lastname} 
                         ${data.programm ? (`
                             <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                                Gracias por tu interes en nuestro programa 
+                            ${data.locale==="es"?"Gracias por tu interes!  ":"Thanks for your Interest! "} 
                             </p> 
-                            <p style="font-size: 16px; line-height: 20px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                                ${data.programm}
-                            </p>    
+
+                            ${data.programm && (`
+                              <p style="font-size: 16px; line-height: 20px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                                  ${data.programm}
+                              </p>    
+                            `)}
+                            
                         `) : (`
                             <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                                Gracias por tu interes en nosotros, estaremos pronto en contacto.
+                            ${data.locale==="es"?" Gracias por tu interes en nosotros, estaremos pronto en contacto.": "Thanks for your interest in us, we will get in touch soon"}
                             </p>
                         `)}  
                     </tr>
@@ -148,7 +151,7 @@ const templateUserConfirmation = (data, newsletter)=> {
     
                  
                   <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                  Si tienes preguntas puedes contactarnos por via telefonica 
+                  ${data.locale==="es"?" Si tienes preguntas puedes contactarnos por via telefonica ": "If you have any questions, you can contact us by phone."}
                    
                    </p>
 
@@ -197,7 +200,7 @@ const templateUserConfirmation = (data, newsletter)=> {
                 <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;" width="596">
                   
                   <p style="font-size: 12px; line-height: 12px; font-family: 'Helvetica', Arial, sans-serif; font-weight: normal; text-decoration: none; color: #000000;">
-                    LEGAL NAME TODO
+                    ICYE Colombia
                   </p>
     
                 
@@ -345,8 +348,10 @@ const templateICYEConfirmation = (data, newsletter)=> {
                   
     
                   <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                  
-                 Nombre: ${data.firstname} ${data.lastname}
+                     Nombre: ${data.firstname} ${data.lastname}
+                  </p> 
+                  <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                     Idioma: ${data.locale}
                   </p> 
                   
                   ${data.programm  !== undefined ? (`
@@ -399,13 +404,12 @@ const templateICYEConfirmation = (data, newsletter)=> {
                   <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/assets/img/icye_logo.png" align="center" width="180" >
     
                   <p style="font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                  Carrera 15 No. 36-40 Bogotá D.C Direccion
+                  Carrera 15 No. 36-40 Bogotá D.C 
                   </p>
     
                   <p style="margin-bottom: 0; font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
                     <a target="_blank" style="text-decoration: underline; color: #011F7F;" href="icyecol@icyecolombia.com">
-                    icyecol@icyecolombia.com Pagina web
-
+                    icyecol@icyecolombia.com 
                     </a>
                   </p>
     
@@ -422,7 +426,7 @@ const templateICYEConfirmation = (data, newsletter)=> {
                 <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;" width="596">
                   
                   <p style="font-size: 12px; line-height: 12px; font-family: 'Helvetica', Arial, sans-serif; font-weight: normal; text-decoration: none; color: #000000;">
-                    LEGAL NAME TODO
+                    ICYE Colombia
                   </p>
     
                 
@@ -454,7 +458,7 @@ app.post('/contact', (req, res) => {
     const mailOptionsUser = {
         from: 'lrodriguezm1991@gmail.com',
         to: JSON.stringify(req.body.email),
-        subject: 'Thanks for your Interest in ICYE',
+        subject:{req.body.locale==="es"?"Gracias por tu interes en ICYE":"'Thanks for your Interest in ICYE'"},
         html: templateUserConfirmation(req.body, false)
       };
       
@@ -500,7 +504,8 @@ app.post('/form', (req, res) => {
     const mailOptionsUser = {
         from: 'lrodriguezm1991@gmail.com',
         to: JSON.stringify(req.body.email),
-        subject: 'Hola, Gracias por tu inscripcion al programa'+ req.body.programm,
+        subject:{req.body.locale==="es"?'Hola, Gracias por tu inscripcion al programa'+ req.body.programm:'Hello, thank you for your enrollment in the program'+ req.body.programm},
+        // subject: 'Hola, Gracias por tu inscripcion al programa'+ req.body.programm,
         html: templateUserConfirmation(req.body, false)
       };
       
@@ -545,7 +550,7 @@ app.post('/newsletter', (req, res) => {
     const mailOptionsUser = {
         from: 'lrodriguezm1991@gmail.com',
         to: JSON.stringify(req.body.email),
-        subject: 'Gracias por inscribirte a nuestro Newsletter',
+        subject:{req.body.locale==="es" ? "Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter"},
         html: templateUserConfirmation(req.body, true)
       };
       
