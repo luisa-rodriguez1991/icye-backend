@@ -10,6 +10,15 @@ app.use(cors({
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user:'lrodriguezm1991@gmail.com',
+      pass:'mhun vhhm nybq dysr'
+    }
+
+});
+
 const templateUserConfirmation = (data, newsletter)=> {
     return `<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -121,7 +130,7 @@ const templateUserConfirmation = (data, newsletter)=> {
                 </h1>
 
                 <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                ${data.locale==="es"?"Gracias por inscribirte a nuestro Newsletter":"TODO English Gracias por inscribirte a nuestro Newsletter"}
+                ${data.locale==="es"?"Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter"}
             
                  
                 </p> 
@@ -444,87 +453,30 @@ const templateICYEConfirmation = (data, newsletter)=> {
     </html>`
 }
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user:'lrodriguezm1991@gmail.com',
-        pass:'mhun vhhm nybq dysr'
-      }
-  
-});
-  
-app.post('/contact', (req, res) => {
+app.post('/form', (req, res) => {
+  const locale = req.body.locale
+  const resp = locale==="es"?"Gracias por tu interes en ICYE":"Thanks for your Interest in ICYE"
 
     const mailOptionsUser = {
         from: 'lrodriguezm1991@gmail.com',
         to: JSON.stringify(req.body.email),
-        subject:{req.body.locale==="es"?"Gracias por tu interes en ICYE":"'Thanks for your Interest in ICYE'"},
+        subject:resp,
         html: templateUserConfirmation(req.body, false)
       };
       
-
       const mailOptionsICYE = {
         from: 'lrodriguezm1991@gmail.com',
         to: 'lrodriguezm1991@gmail.com',
         subject: 'Hola, nuevo contacto',
         html: templateICYEConfirmation(req.body, false)
       };
-
-      transporter.sendMail(mailOptionsICYE, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-            
-
-
-
-            transporter.sendMail(mailOptionsUser, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  res.sendStatus(200)
-                }
-              });
-
-
-
-
-
-
-        }
-      });
-    
-    
-    
-})
-
-
-app.post('/form', (req, res) => {
-
-    const mailOptionsUser = {
-        from: 'lrodriguezm1991@gmail.com',
-        to: JSON.stringify(req.body.email),
-        subject:{req.body.locale==="es"?'Hola, Gracias por tu inscripcion al programa'+ req.body.programm:'Hello, thank you for your enrollment in the program'+ req.body.programm},
-        // subject: 'Hola, Gracias por tu inscripcion al programa'+ req.body.programm,
-        html: templateUserConfirmation(req.body, false)
-      };
+     
       
 
-      const mailOptionsICYE = {
-        from: 'lrodriguezm1991@gmail.com',
-        to: 'lrodriguezm1991@gmail.com',
-        subject: 'Hola, alguien solicito unirse al programa'+ req.body.programm,
-        html: templateICYEConfirmation(req.body, false)
-      };
-
       transporter.sendMail(mailOptionsICYE, function(error, info){
         if (error) {
           console.log(error);
         } else {
-            
-
-
-
             transporter.sendMail(mailOptionsUser, function(error, info){
                 if (error) {
                   console.log(error);
@@ -532,25 +484,19 @@ app.post('/form', (req, res) => {
                   res.sendStatus(200)
                 }
               });
-
-
-
-
-
-
         }
       });
     
     
+    
 })
-
 
 app.post('/newsletter', (req, res) => {
 
     const mailOptionsUser = {
         from: 'lrodriguezm1991@gmail.com',
         to: JSON.stringify(req.body.email),
-        subject:{req.body.locale==="es" ? "Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter"},
+        subject:req.body.locale==="es" ? "Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter",
         html: templateUserConfirmation(req.body, true)
       };
       
@@ -588,6 +534,7 @@ app.post('/newsletter', (req, res) => {
     
     
 })
+
 const PORT = process.env.PORT || 5001
 
 app.listen(PORT, () => {
