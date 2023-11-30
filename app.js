@@ -1,7 +1,6 @@
 const express = require('express')
 var cors = require('cors')
 const app = express()
-const port = 3000
 const nodemailer = require('nodemailer');
 app.use(cors({
   origin: '*'
@@ -13,8 +12,8 @@ app.use(express.json())
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-      user:'lrodriguezm1991@gmail.com',
-      pass:'mhun vhhm nybq dysr'
+      user:'icyecol@icyecolombia.com',
+      pass:'yxed mnqw svfe zvso'
     }
 
 });
@@ -119,57 +118,48 @@ const templateUserConfirmation = (data, newsletter)=> {
         <!-- Start single column section -->
         <table align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #ffffff;" width="600">
             <tbody>
-              <tr>
-                <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 40px;" width="596">
-
                 ${newsletter ? (`
-                <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
-                  
-                ${data.locale==="es"?"Bienevenido a ICYE Colombia Newsletter":"Welcome to ICYE Colombia Newsletter"}
-                
-                </h1>
-
-                <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                ${data.locale==="es"?"Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter"}
-            
-                 
-                </p> 
-
+                <tr>
+                    <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 0;" width="596">
+                        <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
+                        ${data.local==="es"?"Bienevenido a ICYE Colombia Newsletter":"Welcome to ICYE Colombia Newsletter"}
+                        </h1>
+                        <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                        ${data.local==="es"?"Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter"}
+                        </p>
+                    </td>
+                </tr>
                 `) : (`
                     <tr>
-                        <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
-                        ${data.locale==="es"?"Hola!, ":"Hi!, "} ${data.firstname} ${data.lastname} 
-                        ${data.programm ? (`
+                        <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 0;" width="596">
+                            <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
+                            ${data.local==="es"?"Hola!, ":"Hi!, "} ${data.firstname} ${data.lastname} 
+                            </h1>
                             <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                            ${data.locale==="es"?"Gracias por tu interes!  ":"Thanks for your Interest! "} 
-                            </p> 
-
-                            ${data.programm && (`
-                              <p style="font-size: 16px; line-height: 20px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                                  ${data.programm}
-                              </p>    
-                            `)}
-                            
-                        `) : (`
-                            <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                            ${data.locale==="es"?" Gracias por tu interes en nosotros, estaremos pronto en contacto.": "Thanks for your interest in us, we will get in touch soon"}
+                            ${data.local==="es"?" Gracias por tu interes en nosotros, estaremos pronto en contacto.": "Thanks for your interest in us, we will get in touch soon"}
                             </p>
-                        `)}  
+                        </td>
                     </tr>
                 `)}
-    
-                 
-                  <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                  ${data.locale==="es"?" Si tienes preguntas puedes contactarnos por via telefonica ": "If you have any questions, you can contact us by phone."}
-                   
-                   </p>
+                <tr>
+                    <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 0px; padding-bottom: 40px;" width="596">
+                        
+        
+                         <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                            <a target="_blank" style="text-decoration: underline; color: #000000;" href="tel:+573107346918">
+                                Call us 
+                                +57 310 7346918
+                            </a>
+                         </p>  
+                         <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                            <a target="_blank" style="text-decoration: underline; color: #000000;" href="whatsapp://send?abid=+573107346918">
+                             Write us on Whatsapp
+                             +57 310 7346918
+                             </a>
+                         </p>
+                    </td>
+                </tr>
 
-                   <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                   
-                    <a target="_blank" style="text-decoration: underline; color: #000000;" href="tel:+57 310 7346918  Telefono"> +57 310 7346918</a>
-                    </p>
-                </td>
-              </tr>
             </tbody>
           </table>
           <!-- End single column section -->
@@ -229,9 +219,7 @@ const templateUserConfirmation = (data, newsletter)=> {
 
 const templateICYEConfirmation = (data, newsletter)=> {
     return `<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-
-    <head>
-    
+    <head>   
       <!--[if gte mso 9]>
       <xml>
         <o:OfficeDocumentSettings>
@@ -284,194 +272,105 @@ const templateICYEConfirmation = (data, newsletter)=> {
         <!-- End stylesheet -->
     
     </head>
-    
       <!-- You can change background colour here -->
       <body style="text-align: center; margin: 0; padding-top: 10px; padding-bottom: 10px; padding-left: 0; padding-right: 0; -webkit-text-size-adjust: 100%;background-color: #f2f4f6; color: #000000" align="center">
       
       <!-- Fallback force center content -->
       <div style="text-align: center;">
     
-        <!-- Email not displaying correctly -->
-        <table align="center" style="text-align: center; vertical-align: middle; width: 600px; max-width: 600px;" width="600">
-          <tbody>
-            <tr>
-              <td style="width: 596px; vertical-align: middle;" width="596">
-    
-                <p style="font-size: 11px; line-height: 20px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #000000;">Is this email not displaying correctly? Write us <a class="link" style="text-decoration: underline;" target="_blank" href="icyecolombia.com/contact"><u>Click here</u></a></p>
-    
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- Email not displaying correctly -->
-        
         <!-- Start container for logo -->
-        <table align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #ffffff;" width="600">
+        <table  align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #ffffff;" width="600">
           <tbody>
             <tr>
               <td style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px;" width="596">
-    
-                <!-- Your logo is here -->
                 <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/assets/img/icye_logo.png" align="center" width="180">
-    
               </td>
             </tr>
           </tbody>
         </table>
-        <!-- End container for logo -->
-    
-        <!-- Hero image -->
-        <img style="width: 600px; max-width: 600px; text-align: center;" alt="Hero image" src="https://www.icyecolombia.com/assets/img/portada_bg.jpg" align="center" width="600" >
-        <!-- Hero image -->
-    
         <!-- Start single column section -->
-        <table align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #ffffff;" width="600">
-            <tbody>
-              <tr>
-                <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 40px;" width="596">
-
-
-                ${newsletter ? (`
-
-              
-                <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
-                    Hola!, nuevo usuario para el Newsletter                     
+        <table align="center" style="text-align: center; margin:0 auto; vertical-align: top; width: 600px; max-width: 600px; background-color: #ffffff;" width="600">
+            <tbody style="margin:0 auto;">
+              <tr style="margin:0 auto;">
+                <td style="width: 596px; margin:0 auto; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 40px;" width="596">
+                  <h1 style="
+                    font-size: 22px; 
+                    line-height: 24px; 
+                    font-family: 'Helvetica', Arial, sans-serif; 
+                    font-weight: 700; 
+                    text-decoration: none; 
+                    color: #011F7F;">
+                    Hola! ICYE Colombia
                 </h1>
-                <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                    Email: ${data.email}
-                </p>                                      
-         
-
-                    
-                `) : (`
                 
-                
+                 ${data.customerType && (`<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 800; text-decoration: none; color: #919293;">
+                    Tipo de solicitud: ${data.customerType}
+                </p> `)}
+             
+                ${data.local && (`<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                    Idioma: ${data.local}
+                </p> `)} 
 
-
-                <h1 style="font-size: 22px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 700; text-decoration: none; color: #011F7F;">
+               
                   
-                  ${data.programm ? ("Hola!, tenemos un nuevo interesado.") : ("Hola!, nuevo contacto.")}
-                  
-                  </h1>
-
-                  
-    
-                  <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                     Nombre: ${data.firstname} ${data.lastname}
-                  </p> 
-                  <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                     Idioma: ${data.locale}
-                  </p> 
-                  
-                  ${data.programm  !== undefined ? (`
-                        <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                  ${data.programm && (
+                        `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
                             Programa: ${data.programm}
-                        </p>
-                    `):""}
+                        </p>`
+                    )}
+                  
+                  ${data.country && (
+                    `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                        Pais: ${data.country}
+                    </p>`
+                )}
                    
-                   <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                  
-                  Telefono: ${data.phone}
-                   </p>
+                  ${data.phone && (
+                    `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                        Telefono: ${data.phone}
+                    </p>`
+                )}
 
-                   <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                  
-                   Email: ${data.email}
-                    </p>
+                   ${data.email && (
+                        `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                            Email: ${data.email}
+                        </p>`
+                    )}
 
-                    ${data.message !== undefined ? (`
-                        <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                    ${data.message && (
+                        `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
                             Mensaje: ${data.message}
-                        </p>
-                    `):""}
-                `)}
-
-
-
-    
-                  
-    
+                        </p>`
+                    )}
                  
-    
-              
-    
                 </td>
               </tr>
             </tbody>
           </table>
-          <!-- End single column section -->
-          
-         
-    
-          <!-- Start footer -->
-          <table align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #DFE3EF;" width="600">
-            <tbody>
-              <tr>
-                <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;" width="596">
-    
-                  <!-- Your inverted logo is here -->
-                  <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/assets/img/icye_logo.png" align="center" width="180" >
-    
-                  <p style="font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                  Carrera 15 No. 36-40 Bogotá D.C 
-                  </p>
-    
-                  <p style="margin-bottom: 0; font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
-                    <a target="_blank" style="text-decoration: underline; color: #011F7F;" href="icyecol@icyecolombia.com">
-                    icyecol@icyecolombia.com 
-                    </a>
-                  </p>
-    
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <!-- End footer -->
-        
-          <!-- Start unsubscribe section -->
-          <table align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px;" width="600">
-            <tbody>
-              <tr>
-                <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;" width="596">
-                  
-                  <p style="font-size: 12px; line-height: 12px; font-family: 'Helvetica', Arial, sans-serif; font-weight: normal; text-decoration: none; color: #000000;">
-                    ICYE Colombia
-                  </p>
-    
-                
-    
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <!-- End unsubscribe section -->
-      
       </div>
-    
       </body>
-    
     </html>`
 }
 
 app.post('/form', (req, res) => {
-  const locale = req.body.locale
+  const locale = req.body.local
   const resp = locale==="es"?"Gracias por tu interes en ICYE":"Thanks for your Interest in ICYE"
 
     const mailOptionsUser = {
-        from: 'lrodriguezm1991@gmail.com',
+        from: 'ICYE Colombia <icyecol@icyecolombia.com>',
         to: JSON.stringify(req.body.email),
         subject:resp,
         html: templateUserConfirmation(req.body, false)
       };
-      
+
       const mailOptionsICYE = {
-        from: 'lrodriguezm1991@gmail.com',
-        to: 'lrodriguezm1991@gmail.com',
+        from: 'ICYE Colombia <icyecol@icyecolombia.com>',
+        to: 'fabianhaeckermann@gmail.com',
         subject: 'Hola, nuevo contacto',
         html: templateICYEConfirmation(req.body, false)
       };
-     
-      
+
+
 
       transporter.sendMail(mailOptionsICYE, function(error, info){
         if (error) {
@@ -486,9 +385,9 @@ app.post('/form', (req, res) => {
               });
         }
       });
-    
-    
-    
+
+
+
 })
 
 app.post('/newsletter', (req, res) => {
