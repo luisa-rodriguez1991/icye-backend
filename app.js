@@ -141,24 +141,46 @@ const templateUserConfirmation = (data, newsletter)=> {
                         </td>
                     </tr>
                 `)}
+
+               
+
+                ${data.local==="es" ? (`
                 <tr>
                     <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 0px; padding-bottom: 40px;" width="596">
                         
         
                          <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
                             <a target="_blank" style="text-decoration: underline; color: #000000;" href="tel:+573107346918">
-                                Call us 
+                                Llamanos al:  
                                 +57 310 7346918
                             </a>
                          </p>  
                          <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                            <a target="_blank" style="text-decoration: underline; color: #000000;" href="whatsapp://send?abid=+573107346918">
-                             Write us on Whatsapp
+                            <a target="_blank" style="text-decoration: underline; color: #000000;" href="https://wa.link/2bk6ie">
+                            Escribenos al whatsapp:  
                              +57 310 7346918
                              </a>
                          </p>
                     </td>
-                </tr>
+                </tr>`):(`
+                <tr>
+                    <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 0px; padding-bottom: 40px;" width="596">
+                        
+        
+                         <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                            <a target="_blank" style="text-decoration: underline; color: #000000;" href="tel:+573107346918">
+                                Call us :
+                                +57 310 7346918
+                            </a>
+                         </p>  
+                         <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                            <a target="_blank" style="text-decoration: underline; color: #000000;" href="https://wa.link/2bk6ie">
+                             Write us on Whatsapp :
+                             +57 310 7346918
+                             </a>
+                         </p>
+                    </td>
+                </tr>`)}
 
             </tbody>
           </table>
@@ -313,17 +335,17 @@ const templateICYEConfirmation = (data, newsletter)=> {
 
                
                   
-                  ${data.programm && (
-                        `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                            Programa: ${data.programm}
-                        </p>`
-                    )}
-                  
-                  ${data.country && (
+                  ${data.programm===undefined?(""):(
                     `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                        Pais: ${data.country}
+                        Programa: ${data.programm}
                     </p>`
-                )}
+                ) }
+
+                ${data.country===undefined?(""):(
+                  `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                  Pais: ${data.country}
+                  </p>`
+              ) }
                    
                   ${data.phone && (
                     `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
@@ -355,7 +377,6 @@ const templateICYEConfirmation = (data, newsletter)=> {
 app.post('/form', (req, res) => {
   const locale = req.body.local
   const resp = locale==="es"?"Gracias por tu interes en ICYE":"Thanks for your Interest in ICYE"
-
     const mailOptionsUser = {
         from: 'ICYE Colombia <icyecol@icyecolombia.com>',
         to: JSON.stringify(req.body.email),
@@ -365,26 +386,26 @@ app.post('/form', (req, res) => {
 
       const mailOptionsICYE = {
         from: 'ICYE Colombia <icyecol@icyecolombia.com>',
-        to: 'fabianhaeckermann@gmail.com',
+        to: 'lrodriguezm1991@gmail.com',
         subject: 'Hola, nuevo contacto',
         html: templateICYEConfirmation(req.body, false)
       };
 
 
 
-      transporter.sendMail(mailOptionsICYE, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
+     transporter.sendMail(mailOptionsICYE, function(error, info){
+       if (error) {
+         console.log(error);
+       } else {
             transporter.sendMail(mailOptionsUser, function(error, info){
                 if (error) {
-                  console.log(error);
-                } else {
-                  res.sendStatus(200)
-                }
-              });
-        }
-      });
+                 console.log(error);
+               } else {
+                 res.sendStatus(200)
+               }
+             });
+       }
+     });
 
 
 
@@ -392,13 +413,15 @@ app.post('/form', (req, res) => {
 
 app.post('/newsletter', (req, res) => {
 
+
     const mailOptionsUser = {
         from: 'lrodriguezm1991@gmail.com',
         to: JSON.stringify(req.body.email),
-        subject:req.body.locale==="es" ? "Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter",
+        subject:req.body.local==="es" ? "Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter",
         html: templateUserConfirmation(req.body, true)
       };
-      
+     
+
 
       const mailOptionsICYE = {
         from: 'lrodriguezm1991@gmail.com',
