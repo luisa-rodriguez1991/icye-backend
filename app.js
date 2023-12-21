@@ -111,7 +111,7 @@ const templateUserConfirmation = (data, newsletter)=> {
         <!-- End container for logo -->
     
         <!-- Hero image -->
-        <img style="width: 600px; max-width: 600px; text-align: center;" alt="Hero image" src="https://www.icyecolombia.com/assets/img/portada_bg.jpg" align="center" width="600" >
+        <img style="width: 600px; max-width: 600px; text-align: center;" alt="Hero image" src="https://www.icyecolombia.com/backend/mail/email.jpg" align="center" width="600" >
         <!-- Hero image -->
     
         <!-- Start single column section -->
