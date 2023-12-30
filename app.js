@@ -97,19 +97,7 @@ const templateUserConfirmation = (data, newsletter)=> {
         
         <!-- Email not displaying correctly -->
         
-        <!-- Start container for logo -->
-        <table align="center" style="text-align: center; vertical-align: top; width: 600px; max-width: 600px; background-color: #ffffff;" width="600">
-          <tbody>
-            <tr>
-              <td style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px;" width="596">
-    
-                <!-- Your logo is here -->
-                <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src=https://www.icyecolombia.com/backend/mail/LogoICYE.png" align="center" width="280">
-    
-              </td>
-            </tr>
-          </tbody>
-        </table>
+       
         <!-- End container for logo -->
     
         <!-- Hero image -->
