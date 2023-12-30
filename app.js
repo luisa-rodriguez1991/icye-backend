@@ -137,7 +137,7 @@ const templateUserConfirmation = (data, newsletter)=> {
                             ${data.local==="es"?"Hola!, ":"Hi!, "} ${data.firstname} ${data.lastname} 
                             </h1>
                             <p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
-                            ${data.local==="es"?" Gracias por tu interes en nosotros, estaremos pronto en contacto.": "Thanks for your interest in us, we will get in touch soon"}
+                            ${data.local==="es"?" Gracias por tu interes en nosotros prueba, estaremos pronto en contacto.": "Thanks for your interest in us, we will get in touch soon"}
                             </p>
                         </td>
                     </tr>
