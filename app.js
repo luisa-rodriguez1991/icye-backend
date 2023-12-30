@@ -98,7 +98,7 @@ const templateUserConfirmation = (data, newsletter)=> {
         <!-- Email not displaying correctly -->
         
        
-        <!-- End container for logo -->
+        
     
         <!-- Hero image -->
         <img style="width: 600px; max-width: 600px; text-align: center;" alt="Hero image" src="https://www.icyecolombia.com/backend/mail/email.jpg" align="center" width="600" >
@@ -184,7 +184,7 @@ const templateUserConfirmation = (data, newsletter)=> {
                 <td style="width: 596px; vertical-align: top; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;" width="596">
     
                   <!-- Your inverted logo is here -->
-                  <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/backend/mail/logoSlogan.png" align="center" width="180" >
+                  <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/backend/mail/logoCompuesto.png" align="center" width="180" >
     
                   <p style="font-size: 13px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #011F7F;">
                   Carrera 15 No. 36-40 Bogotá D.C
@@ -294,7 +294,7 @@ const templateICYEConfirmation = (data, newsletter)=> {
           <tbody>
             <tr>
               <td style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px;" width="596">
-                <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/backend/mail/logoSlogan.png" align="center" width="180">
+                <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/backend/mail/logoCompuesto.png" align="center" width="180">
               </td>
             </tr>
           </tbody>
