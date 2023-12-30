@@ -294,7 +294,7 @@ const templateICYEConfirmation = (data, newsletter)=> {
           <tbody>
             <tr>
               <td style="width: 596px; vertical-align: top; padding-left: 0; padding-right: 0; padding-top: 15px; padding-bottom: 15px;" width="596">
-                <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/backend/mail/logoCompuesto.png" align="center" width="180">
+                <img style="width: 180px; max-width: 180px; text-align: center; color: #ffffff;" alt="Logo" src="https://www.icyecolombia.com/backend/mail/logoSlogan.png" align="center" width="180">
               </td>
             </tr>
           </tbody>
