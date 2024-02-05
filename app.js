@@ -375,7 +375,7 @@ app.post('/form', (req, res) => {
 
       const mailOptionsICYE = {
         from: 'ICYE Colombia <icyecol@icyecolombia.com>',
-        to: 'lrodriguezm1991@gmail.com',
+        to: 'icyecol@icyecolombia.com',
         subject: 'Hola, nuevo contacto',
         html: templateICYEConfirmation(req.body, false)
       };
@@ -404,7 +404,7 @@ app.post('/newsletter', (req, res) => {
 
 
     const mailOptionsUser = {
-        from: 'lrodriguezm1991@gmail.com',
+        from: 'icyecol@icyecolombia.com',
         to: JSON.stringify(req.body.email),
         subject:req.body.local==="es" ? "Gracias por inscribirte a nuestro Newsletter":"Thank you for subscribing to our newsletter",
         html: templateUserConfirmation(req.body, true)
@@ -413,8 +413,8 @@ app.post('/newsletter', (req, res) => {
 
 
       const mailOptionsICYE = {
-        from: 'lrodriguezm1991@gmail.com',
-        to: 'lrodriguezm1991@gmail.com',
+        from: 'icyecol@icyecolombia.com',
+        to: 'icyecol@icyecolombia.com',
         subject: 'Hola, alguien solicito unirse al Newsletter',
         html: templateICYEConfirmation(req.body, true)
       };
