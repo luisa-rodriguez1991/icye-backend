@@ -322,6 +322,12 @@ const templateICYEConfirmation = (data, newsletter)=> {
                     Idioma: ${data.local}
                 </p> `)} 
 
+                ${data.firstname===undefined?(""):(
+                  `<p style="font-size: 16px; line-height: 24px; font-family: 'Helvetica', Arial, sans-serif; font-weight: 400; text-decoration: none; color: #919293;">
+                      Nombre: ${data.firstname} ${data.lastname}
+                  </p>`
+              ) }
+
                
                   
                   ${data.programm===undefined?(""):(
